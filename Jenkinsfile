@@ -1,7 +1,6 @@
 import groovy.json.JsonOutput
 // Add whichever params you think you'd most want to have
 
-
 def newJiraIssue(summary, description){
     def testIssue = [fields: [ project: [key: 'CMSTZDEV'],
                        summary: summary,
@@ -46,14 +45,14 @@ node('t0ReplayNode') {
             condor_rm -all
             sleep 10
         '''
-        JiraIssueMessage = "Configuration is available: "
+        JiraIssueMessage = "Configuration is available on the following link: "
         script{
             GIT_COMMIT_MSG= sh(returnStdout: true, script: "git log --oneline -1").trim()
             echo GIT_COMMIT_MSG
+            // I am not sure if "${JiraIssueMessage} ${ghprbPullLink}" is useful. Every commit message should be a good explanation of the replay
             newJiraIssue("Tier0_REPLAY v${BUILD_NUMBER}. ${GIT_COMMIT_MSG}", "${JiraIssueMessage} ${ghprbPullLink}")
             echo JIRA_ISSUE_ID
             echo 'CleanupBefore'
-
         }
     }
     stage('DeployTheAgent') {
@@ -74,9 +73,10 @@ node('t0ReplayNode') {
         script{
             echo 'Deploy agent'
             SHELL_OUTPUT = sh(returnStdout: true, script: 'python /data/tier0/jenkins/message.py /data/tier0/jenkins/compile.py /data/tier0/admin/ReplayOfflineConfiguration.py')
-            addJiraComment(SHELL_OUTPUT)
+            // I think that this output is useless
+            //addJiraComment(SHELL_OUTPUT)
             SHELL_OUTPUT = sh(returnStdout: true, script: 'python /data/tier0/jenkins/message.py /data/tier0/jenkins/compile.py /data/tier0/admin/ReplayOfflineConfiguration.py 1')
-            addJiraComment('DeployAgent done')
+            addJiraComment('The agent has been deployed successfully')
         }
     }
     stage('StartTheAgent') {
@@ -98,7 +98,6 @@ node('t0ReplayNode') {
             echo JIRA_ISSUE_ID
             echo 'Start agent'
         }
-
     }
     stage('ReplayChecks') {
         parallel (
@@ -107,39 +106,39 @@ node('t0ReplayNode') {
                     script{
                         echo 'passing Checking the Pause status.'
                         SHELL_OUTPUT = sh(returnStdout: true, script: 'python /data/tier0/jenkins/message.py /data/tier0/jenkins/compile.py /data/tier0/jenkins/replayWorkflowStatus.py')
-                        addJiraComment(SHELL_OUTPUT)
+                        // Useless comment
+                        //addJiraComment(SHELL_OUTPUT)
                         SHELL_OUTPUT = sh(returnStdout: true, script: 'python /data/tier0/jenkins/compile.py /data/tier0/jenkins/replayWorkflowStatus.py 1')
                         SHELL_OUTPUT = sh(returnStdout: true, script: 'python /data/tier0/jenkins/message.py /data/tier0/jenkins/replayWorkflowStatus.py Paused')
                         echo 'passing Checking the Pause status.'
                         echo SHELL_OUTPUT
-                        addJiraComment(SHELL_OUTPUT)
-                        addJiraComment('PauseProgress done')
-
+                        //Useless comment
+                        //addJiraComment(SHELL_OUTPUT)
+                        addJiraComment('Method to check progress on paused jobs have been initiliazed correctly')
                     }
                 }},
             'RepackProgress': 
                 { stage('RepackProgress'){
                     script{
-
                         SHELL_OUTPUT = sh(returnStdout: true, script: 'python /data/tier0/jenkins/replayWorkflowStatus.py Repack')
                         SHELL_OUTPUT = sh(returnStdout: true, script: 'python /data/tier0/jenkins/message.py /data/tier0/jenkins/replayWorkflowStatus.py Repack')
                         echo 'passing Checking the Repack status.'
                         echo SHELL_OUTPUT
-                        addJiraComment(SHELL_OUTPUT)
-                        addJiraComment('RepackProgress done')
-
+                        //Useless comment
+                        //addJiraComment(SHELL_OUTPUT)
+                        addJiraComment('Repack jobs are now being monitorized')
                     }
                 }},
             'ExpressProgress': { 
                 stage('ExpressProgress'){
                     script{
-
                         SHELL_OUTPUT = sh(returnStdout: true, script: 'python /data/tier0/jenkins/replayWorkflowStatus.py Express')
                         SHELL_OUTPUT = sh(returnStdout: true, script: 'python /data/tier0/jenkins/message.py /data/tier0/jenkins/replayWorkflowStatus.py Express')
                         echo 'passing Checking the Express status.'
                         echo SHELL_OUTPUT
-                        addJiraComment(SHELL_OUTPUT)
-                        addJiraComment('ExpressProgress done')
+                        //Useless comment
+                        //addJiraComment(SHELL_OUTPUT)
+                        addJiraComment('Express jobs are now being checked')
                     }
                 }
             },
@@ -151,15 +150,15 @@ node('t0ReplayNode') {
                         SHELL_OUTPUT = sh(returnStdout: true, script: 'python /data/tier0/jenkins/message.py /data/tier0/jenkins/replayWorkflowStatus.py Fileset')
                         echo 'passing Checking the Filesets status.'
                         echo SHELL_OUTPUT
-                        addJiraComment(SHELL_OUTPUT)
-                        addJiraComment('FilesetProgress done')
+                        //addJiraComment(SHELL_OUTPUT)
+                        addJiraComment('Filesets progress is now available')
 
                     }
                 }                    
             }
         )
         echo "end of script"
-        addJiraComment('The replay finished successfully.')
+        addJiraComment('The replay has finished successfully.')
 
     }
 }
