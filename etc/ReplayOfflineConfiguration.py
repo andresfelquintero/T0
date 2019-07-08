@@ -35,7 +35,7 @@ tier0Config = createTier0Config()
 setConfigVersion(tier0Config, "replace with real version")
 
 # Set run number to replay
-setInjectRuns(tier0Config, [ 312851 ])
+setInjectRuns(tier0Config, [ 328676, 328788 ])
 
 # Settings up sites
 processingSite = "T2_CH_CERN"
@@ -90,7 +90,7 @@ setPromptCalibrationConfig(tier0Config,
 
 # Defaults for CMSSW version
 defaultCMSSWVersion = {
-       'default': "CMSSW_10_3_3"
+       'default': "CMSSW_10_6_1_patch1"
      }
 
 # Configure ScramArch
@@ -119,7 +119,7 @@ else:
     alcarawProcVersion = 1
 
 # Defaults for GlobalTag
-expressGlobalTag = "103X_dataRun2_Express_v2"
+expressGlobalTag = "106X_dataRun3_Express_Candidate_2019_05_24_21_36_45"
 promptrecoGlobalTag = "103X_dataRun2_Prompt_v3"
 alcap0GlobalTag = "103X_dataRun2_Prompt_v3"
 
@@ -138,53 +138,55 @@ alcarawSplitting = 20000 * numberOfCores
 # Setup repack and express mappings
 #
 repackVersionOverride = {
-    "CMSSW_10_0_0" : "CMSSW_10_3_3",
-    "CMSSW_10_0_1" : "CMSSW_10_3_3",
-    "CMSSW_10_0_2" : "CMSSW_10_3_3",
-    "CMSSW_10_0_3" : "CMSSW_10_3_3",
-    "CMSSW_10_0_4" : "CMSSW_10_3_3",
-    "CMSSW_10_0_5" : "CMSSW_10_3_3",
-    "CMSSW_10_1_0" : "CMSSW_10_3_3",
-    "CMSSW_10_1_1" : "CMSSW_10_3_3",
-    "CMSSW_10_1_2" : "CMSSW_10_3_3",
-    "CMSSW_10_1_3" : "CMSSW_10_3_3",
-    "CMSSW_10_1_4" : "CMSSW_10_3_3",
-    "CMSSW_10_1_5" : "CMSSW_10_3_3",
-    "CMSSW_10_1_6" : "CMSSW_10_3_3",
-    "CMSSW_10_1_7" : "CMSSW_10_3_3",
-    "CMSSW_10_1_8" : "CMSSW_10_3_3",
-    "CMSSW_10_1_9" : "CMSSW_10_3_3",
-    "CMSSW_10_1_10" : "CMSSW_10_3_3",
-    "CMSSW_10_2_0" : "CMSSW_10_3_3",
-    "CMSSW_10_2_1" : "CMSSW_10_3_3",
-    "CMSSW_10_2_5" : "CMSSW_10_3_3",
-    "CMSSW_10_3_0" : "CMSSW_10_3_3",
-    "CMSSW_10_3_1" : "CMSSW_10_3_3"
+    "CMSSW_10_0_0" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_0_1" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_0_2" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_0_3" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_0_4" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_0_5" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_0" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_1" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_2" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_3" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_4" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_5" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_6" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_7" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_8" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_9" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_10" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_2_0" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_2_1" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_2_5" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_3_0" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_3_1" : "CMSSW_10_6_1_patch1", 
+    "CMSSW_10_3_3" : "CMSSW_10_6_1_patch1"
     }
 
 expressVersionOverride = {
-    "CMSSW_10_0_0" : "CMSSW_10_3_3",
-    "CMSSW_10_0_1" : "CMSSW_10_3_3",
-    "CMSSW_10_0_2" : "CMSSW_10_3_3",
-    "CMSSW_10_0_3" : "CMSSW_10_3_3",
-    "CMSSW_10_0_4" : "CMSSW_10_3_3",
-    "CMSSW_10_0_5" : "CMSSW_10_3_3",
-    "CMSSW_10_1_0" : "CMSSW_10_3_3",
-    "CMSSW_10_1_1" : "CMSSW_10_3_3",
-    "CMSSW_10_1_2" : "CMSSW_10_3_3",
-    "CMSSW_10_1_3" : "CMSSW_10_3_3",
-    "CMSSW_10_1_4" : "CMSSW_10_3_3",
-    "CMSSW_10_1_5" : "CMSSW_10_3_3",
-    "CMSSW_10_1_6" : "CMSSW_10_3_3",
-    "CMSSW_10_1_7" : "CMSSW_10_3_3",
-    "CMSSW_10_1_8" : "CMSSW_10_3_3",
-    "CMSSW_10_1_9" : "CMSSW_10_3_3",
-    "CMSSW_10_1_10" : "CMSSW_10_3_3",
-    "CMSSW_10_2_0" : "CMSSW_10_3_3",
-    "CMSSW_10_2_1" : "CMSSW_10_3_3",
-    "CMSSW_10_2_5" : "CMSSW_10_3_3",
-    "CMSSW_10_3_0" : "CMSSW_10_3_3",
-    "CMSSW_10_3_1" : "CMSSW_10_3_3"
+    "CMSSW_10_0_0" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_0_1" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_0_2" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_0_3" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_0_4" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_0_5" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_0" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_1" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_2" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_3" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_4" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_5" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_6" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_7" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_8" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_9" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_1_10" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_2_0" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_2_1" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_2_5" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_3_0" : "CMSSW_10_6_1_patch1",
+    "CMSSW_10_3_1" : "CMSSW_10_6_1_patch1", 
+    "CMSSW_10_3_3" : "CMSSW_10_6_1_patch1"
     }
 
 #set default repack settings for bulk streams
@@ -233,7 +235,7 @@ addExpressConfig(tier0Config, "Express",
                  alca_producers = [ "SiStripPCLHistos", "SiStripCalZeroBias", "SiStripCalMinBias", "SiStripCalMinBiasAAG",
                                     "TkAlMinBias", "DtCalib", "LumiPixelsMinBias", "SiPixelCalZeroBias",
                                     "PromptCalibProd", "PromptCalibProdSiStrip", "PromptCalibProdSiPixelAli",
-                                    "PromptCalibProdSiStripGains", "PromptCalibProdSiStripGainsAAG", "PromptCalibProdSiPixel"
+                                    "PromptCalibProdSiStripGains", "PromptCalibProdSiStripGainsAAG", "PromptCalibProdSiPixel", "SiStripCalCosmics"
                                     ],
                  reco_version = defaultCMSSWVersion,
                  multicore = numberOfCores,
@@ -257,7 +259,7 @@ addExpressConfig(tier0Config, "ExpressCosmics",
                  write_dqm = True,
                  alca_producers = [ "SiStripPCLHistos", "SiStripCalZeroBias", "TkAlCosmics0T",
                                     "DtCalibCosmics", "SiPixelCalZeroBias",
-                                    "PromptCalibProdSiStrip", "PromptCalibProdSiPixel"
+                                    "PromptCalibProdSiStrip", "PromptCalibProdSiPixel", "SiStripCalCosmics"
                                     ],
                  reco_version = defaultCMSSWVersion,
                  multicore = numberOfCores,
