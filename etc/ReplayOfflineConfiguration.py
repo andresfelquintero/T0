@@ -120,8 +120,8 @@ else:
 
 # Defaults for GlobalTag
 expressGlobalTag = "106X_dataRun3_Express_Candidate_2019_05_24_21_36_45"
-promptrecoGlobalTag = "103X_dataRun2_Prompt_v3"
-alcap0GlobalTag = "103X_dataRun2_Prompt_v3"
+promptrecoGlobalTag = "106X_dataRun3_Prompt_Candidate_2019_07_08_21_14_46"
+alcap0GlobalTag = "106X_dataRun3_Prompt_Candidate_2019_07_08_21_14_46"
 
 # Mandatory for CondDBv2
 globalTagConnect = "frontier://PromptProd/CMS_CONDITIONS"
