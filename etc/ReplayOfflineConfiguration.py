@@ -90,7 +90,7 @@ setPromptCalibrationConfig(tier0Config,
 
 # Defaults for CMSSW version
 defaultCMSSWVersion = {
-       'default': "CMSSW_10_6_1_patch1"
+       'default': "CMSSW_10_6_1_patch2"
      }
 
 # Configure ScramArch
@@ -119,9 +119,9 @@ else:
     alcarawProcVersion = 1
 
 # Defaults for GlobalTag
-expressGlobalTag = "106X_dataRun3_Express_Candidate_2019_05_24_21_36_45"
-promptrecoGlobalTag = "106X_dataRun3_Prompt_Candidate_2019_07_08_21_14_46"
-alcap0GlobalTag = "106X_dataRun3_Prompt_Candidate_2019_07_08_21_14_46"
+expressGlobalTag = "106X_dataRun3_Express_Candidate_2019_07_12_16_29_37"
+promptrecoGlobalTag = "106X_dataRun3_Prompt_Candidate_2019_07_12_16_18_41"
+alcap0GlobalTag = "106X_dataRun3_Prompt_Candidate_2019_07_12_16_18_41"
 
 # Mandatory for CondDBv2
 globalTagConnect = "frontier://PromptProd/CMS_CONDITIONS"
@@ -138,55 +138,55 @@ alcarawSplitting = 20000 * numberOfCores
 # Setup repack and express mappings
 #
 repackVersionOverride = {
-    "CMSSW_10_0_0" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_0_1" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_0_2" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_0_3" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_0_4" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_0_5" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_0" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_1" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_2" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_3" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_4" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_5" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_6" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_7" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_8" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_9" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_10" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_2_0" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_2_1" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_2_5" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_3_0" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_3_1" : "CMSSW_10_6_1_patch1", 
-    "CMSSW_10_3_3" : "CMSSW_10_6_1_patch1"
+    "CMSSW_10_0_0" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_0_1" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_0_2" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_0_3" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_0_4" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_0_5" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_0" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_1" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_2" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_3" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_4" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_5" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_6" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_7" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_8" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_9" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_10" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_2_0" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_2_1" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_2_5" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_3_0" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_3_1" : "CMSSW_10_6_1_patch2", 
+    "CMSSW_10_3_3" : "CMSSW_10_6_1_patch2"
     }
 
 expressVersionOverride = {
-    "CMSSW_10_0_0" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_0_1" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_0_2" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_0_3" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_0_4" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_0_5" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_0" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_1" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_2" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_3" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_4" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_5" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_6" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_7" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_8" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_9" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_1_10" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_2_0" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_2_1" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_2_5" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_3_0" : "CMSSW_10_6_1_patch1",
-    "CMSSW_10_3_1" : "CMSSW_10_6_1_patch1", 
-    "CMSSW_10_3_3" : "CMSSW_10_6_1_patch1"
+    "CMSSW_10_0_0" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_0_1" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_0_2" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_0_3" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_0_4" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_0_5" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_0" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_1" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_2" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_3" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_4" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_5" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_6" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_7" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_8" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_9" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_1_10" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_2_0" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_2_1" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_2_5" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_3_0" : "CMSSW_10_6_1_patch2",
+    "CMSSW_10_3_1" : "CMSSW_10_6_1_patch2", 
+    "CMSSW_10_3_3" : "CMSSW_10_6_1_patch2"
     }
 
 #set default repack settings for bulk streams
