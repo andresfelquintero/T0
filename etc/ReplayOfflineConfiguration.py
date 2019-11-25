@@ -35,7 +35,7 @@ tier0Config = createTier0Config()
 setConfigVersion(tier0Config, "replace with real version")
 
 # Set run number to replay
-setInjectRuns(tier0Config, [ 331483, 331488, 331563 ])
+setInjectRuns(tier0Config, [ 331483 ])
 
 # Settings up sites
 processingSite = "T2_CH_CERN"
@@ -119,9 +119,9 @@ else:
     alcarawProcVersion = 1
 
 # Defaults for GlobalTag
-expressGlobalTag = "106X_dataRun3_Express_v2"
-promptrecoGlobalTag = "106X_dataRun3_Prompt_v3"
-alcap0GlobalTag = "106X_dataRun3_Prompt_v3"
+expressGlobalTag = "106X_dataRun3_Express_HcalUpdate_v1"
+promptrecoGlobalTag = "106X_dataRun3_Prompt_HcalUpdate_v1"
+alcap0GlobalTag = "106X_dataRun3_Prompt_HcalUpdate_v1"
 
 # Mandatory for CondDBv2
 globalTagConnect = "frontier://PromptProd/CMS_CONDITIONS"
