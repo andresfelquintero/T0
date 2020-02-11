@@ -1,10 +1,10 @@
 """
 _OfflineConfiguration_
-
+ 
 Processing configuration for the Tier0 - Replay version
 """
 from __future__ import print_function
-
+ 
 import os
 from T0.RunConfig.Tier0Config import addDataset
 from T0.RunConfig.Tier0Config import createTier0Config
@@ -27,20 +27,20 @@ from T0.RunConfig.Tier0Config import addConversionConfig
 from T0.RunConfig.Tier0Config import setInjectRuns
 from T0.RunConfig.Tier0Config import setStreamerPNN
 from T0.RunConfig.Tier0Config import setEnableUniqueWorkflowName
-
+ 
 # Create the Tier0 configuration object
 tier0Config = createTier0Config()
-
+ 
 # Set the verstion configuration (not used at the moment)
 setConfigVersion(tier0Config, "replace with real version")
-
+ 
 # Set run number to replay
-setInjectRuns(tier0Config, [ 329990, 329995 ])
-
+setInjectRuns(tier0Config, [ 334393 ])
+ 
 # Settings up sites
 processingSite = "T2_CH_CERN"
 streamerPNN = "T2_CH_CERN"
-
+ 
 # Set global parameters:
 #  Acquisition era
 #  BaseRequestPriority
@@ -54,25 +54,25 @@ setBackfill(tier0Config, 1)
 setBulkDataType(tier0Config, "data")
 setProcessingSite(tier0Config, processingSite)
 setStreamerPNN(tier0Config, streamerPNN)
-
+ 
 # Override for DQM data tier
 setDQMDataTier(tier0Config, "DQMIO")
-
+ 
 # Set unique replay workflow names
 # Uses era name, Repack, Express, PromptReco processing versions, date/time, e.g.:
 # PromptReco_Run322057_Charmonium_Tier0_REPLAY_vocms047_v274_190221_121
 setEnableUniqueWorkflowName(tier0Config)
-
+ 
 # Define the two default timeouts for reco release
 # First timeout is used directly for reco release
 # Second timeout is used for the data service PromptReco start check
 # (to basically say we started PromptReco even though we haven't)
 defaultRecoTimeout =  10 * 60
 defaultRecoLockTimeout = 5 * 60
-
+ 
 # DQM Server
 setDQMUploadUrl(tier0Config, "https://cmsweb.cern.ch/dqm/dev;https://cmsweb-testbed.cern.ch/dqm/offline-test")
-
+ 
 # PCL parameters
 setPromptCalibrationConfig(tier0Config,
                            alcaHarvestTimeout = 12*3600,
@@ -81,32 +81,32 @@ setPromptCalibrationConfig(tier0Config,
                            conditionUploadTimeout = 18*3600,
                            dropboxHost = "webcondvm.cern.ch",
                            validationMode = True)
-
+ 
 # Special syntax supported for cmssw version, processing version and global tag
 #
 # { 'acqEra': {'Era1': Value1, 'Era2': Value2},
 #   'maxRun': {100000: Value3, 200000: Value4},
 #   'default': Value5 }
-
+ 
 # Defaults for CMSSW version
 defaultCMSSWVersion = {
-       'default': "CMSSW_10_6_3_patch1"
+       'default': "CMSSW_11_0_0_patch1"
      }
-
+ 
 # Configure ScramArch
-setDefaultScramArch(tier0Config, "slc7_amd64_gcc700")
-
+setDefaultScramArch(tier0Config, "slc7_amd64_gcc820")
+ 
 # Configure scenarios
 ppScenario = "ppEra_Run3"
 ppScenarioB0T = "ppEra_Run3"
 cosmicsScenario = "cosmicsEra_Run3"
 hcalnzsScenario = "hcalnzsEra_Run3"
-hiScenario = "ppEra_Run2_2016_pA"
-alcaTrackingOnlyScenario = "trackingOnlyEra_Run3"
+hiScenario = "ppEra_Run3"
+alcaTrackingOnlyScenario = "trackingOnlyEra_Run2_2018"
 alcaTestEnableScenario = "AlCaTestEnable"
 alcaLumiPixelsScenario = "AlCaLumiPixels"
-hiTestppScenario = "ppEra_Run2_2018_pp_on_AA"
-
+hiTestppScenario = "ppEra_Run3"
+ 
 # Procesing version nunmber for replays is Jenkins build number
 if os.environ.get('T0_PROCESSING_VERSION'):
     defaultProcVersion = int(os.environ.get('T0_PROCESSING_VERSION'))
@@ -117,82 +117,84 @@ else:
     defaultProcVersion = 1
     expressProcVersion = 1
     alcarawProcVersion = 1
-
+ 
 # Defaults for GlobalTag
-expressGlobalTag = "106X_dataRun3_Express_v2"
-promptrecoGlobalTag = "106X_dataRun3_Prompt_v3"
-alcap0GlobalTag = "106X_dataRun3_Prompt_v3"
-
+expressGlobalTag = "110X_dataRun3_Express_HcalForMWGR1_v1"
+promptrecoGlobalTag = "110X_dataRun3_Prompt_HcalForMWGR1_v1"
+alcap0GlobalTag = "110X_dataRun3_Prompt_HcalForMWGR1_v1"
+ 
 # Mandatory for CondDBv2
 globalTagConnect = "frontier://PromptProd/CMS_CONDITIONS"
-
+ 
 # Multicore settings
 numberOfCores = 8
-
+ 
 # Splitting parameters for PromptReco
 defaultRecoSplitting = 750 * numberOfCores
 hiRecoSplitting = 200 * numberOfCores
 alcarawSplitting = 20000 * numberOfCores
-
+ 
 #
 # Setup repack and express mappings
 #
 repackVersionOverride = {
-    "CMSSW_10_0_0" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_0_1" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_0_2" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_0_3" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_0_4" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_0_5" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_0" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_1" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_2" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_3" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_4" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_5" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_6" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_7" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_8" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_9" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_10" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_2_0" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_2_1" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_2_5" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_3_0" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_3_1" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_3_3" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_6_1" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_6_3" : "CMSSW_10_6_3_patch1"
+    "CMSSW_10_0_0" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_0_1" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_0_2" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_0_3" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_0_4" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_0_5" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_0" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_1" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_2" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_3" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_4" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_5" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_6" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_7" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_8" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_9" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_10" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_2_0" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_2_1" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_2_5" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_3_0" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_3_1" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_3_3" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_6_1" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_6_3" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_6_8" : "CMSSW_11_0_0_patch1"
     }
-
+ 
 expressVersionOverride = {
-    "CMSSW_10_0_0" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_0_1" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_0_2" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_0_3" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_0_4" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_0_5" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_0" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_1" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_2" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_3" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_4" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_5" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_6" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_7" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_8" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_9" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_1_10" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_2_0" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_2_1" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_2_5" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_3_0" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_3_1" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_3_3" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_6_1" : "CMSSW_10_6_3_patch1",
-    "CMSSW_10_6_3" : "CMSSW_10_6_3_patch1"
+    "CMSSW_10_0_0" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_0_1" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_0_2" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_0_3" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_0_4" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_0_5" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_0" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_1" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_2" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_3" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_4" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_5" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_6" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_7" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_8" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_9" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_1_10" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_2_0" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_2_1" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_2_5" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_3_0" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_3_1" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_3_3" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_6_1" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_6_3" : "CMSSW_11_0_0_patch1",
+    "CMSSW_10_6_8" : "CMSSW_11_0_0_patch1"
     }
-
+ 
 #set default repack settings for bulk streams
 addRepackConfig(tier0Config, "Default",
                 proc_ver = defaultProcVersion,
@@ -207,7 +209,7 @@ addRepackConfig(tier0Config, "Default",
                 maxLatency = 24 * 3600,
                 blockCloseDelay = 1200,
                 versionOverride = repackVersionOverride)
-
+ 
 addDataset(tier0Config, "Default",
            do_reco = False,
            write_reco = False, write_aod = True, write_miniaod = True, write_dqm = False,
@@ -227,11 +229,11 @@ addDataset(tier0Config, "Default",
            timePerEvent = 5,
            sizePerEvent = 1500,
            scenario = ppScenario)
-
+ 
 #############################
 ### Express configuration ###
 #############################
-
+ 
 addExpressConfig(tier0Config, "Express",
                  scenario = ppScenario,
                  data_tiers = [ "FEVT" ],
@@ -256,7 +258,7 @@ addExpressConfig(tier0Config, "Express",
                  timePerEvent = 4,
                  sizePerEvent = 1700,
                  versionOverride = expressVersionOverride)
-
+ 
 addExpressConfig(tier0Config, "ExpressCosmics",
                  scenario = cosmicsScenario,
                  data_tiers = [ "FEVT" ],
