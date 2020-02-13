@@ -120,8 +120,8 @@ else:
  
 # Defaults for GlobalTag
 expressGlobalTag = "110X_dataRun3_Express_HcalForMWGR1_v1"
-promptrecoGlobalTag = "110X_dataRun3_Prompt_HcalForMWGR1_v1"
-alcap0GlobalTag = "110X_dataRun3_Prompt_HcalForMWGR1_v1"
+promptrecoGlobalTag = "110X_dataRun3_Prompt_HcalForMWGR1_v2"
+alcap0GlobalTag = "110X_dataRun3_Prompt_HcalForMWGR1_v2"
  
 # Mandatory for CondDBv2
 globalTagConnect = "frontier://PromptProd/CMS_CONDITIONS"
